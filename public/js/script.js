@@ -1,31 +1,26 @@
-console.log('hello');
-// script.js
-// import { generateText } from './api.js';
-// import { loadLesson } from './lesson.js';
+const API_URL = 'https://icanhazdadjoke.com/';
+const jokeTextElement = document.getElementById('target-text');
 
-const userInputElement = document.getElementById('user-input');
-userInputElement.addEventListener('input', handleInput);
-
-async function getLessonFiles() {
-   // Получение списка файлов уроков
-}
-
-async function getLessonText(lessonFileName) {
-   // Загрузка текста урока
-}
-
-async function getApiText() {
-   // Получение шутки от API
-}
-
-async function getRandomText() {
-   // Генерация случайных слов
-}
-
-async function loadText() {
+async function getJoke() {
    try {
-      // Загрузка текста
+      const response = await fetch(API_URL, {
+         headers: {
+            Accept: 'application/json',
+         },
+      });
+      if (!response.ok) {
+         throw new Error(`HTTP ошибка! статус: ${response.status}`);
+      }
+      const data = await response.json();
+      if (data && data.joke) {
+         jokeTextElement.textContent = data.joke;
+      } else {
+         jokeTextElement.textContent = 'Не удалось получить шутку.';
+      }
    } catch (error) {
-      // Отображение ошибки
+      console.error('Ошибка при получении шутки:', error);
+      jokeTextElement.textContent = 'Не удалось получить шутку.';
    }
 }
+
+getJoke();
