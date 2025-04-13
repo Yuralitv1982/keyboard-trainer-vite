@@ -1,13 +1,44 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Keyboard trener</title>
+      <link rel="stylesheet" href="style.css" />
+   </head>
+   <body>
+      <div id="background-container"></div>
+      <div class="container">
+         <div class="source-selector">
+            <label>
+               <input type="radio" name="source" value="lessons" /> Lessons
+               (files)
+            </label>
+            <label>
+               <input type="radio" name="source" value="internet" checked />
+               Internet (API)
+            </label>
+         </div>
+         <div class="lesson-selector">
+            <label for="lesson-select">Chose a lesson:</label>
+            <select id="lesson-select"></select>
+         </div>
+         <div class="target-cpm-input">
+            <label for="target-cpm">Target speed:</label>
+            <input type="number" id="target-cpm" value="170" />
+         </div>
+         <div class="loading-indicator" style="display: none">Загрузка...</div>
+         <div class="text-display">
+            <p id="target-text"></p>
+         </div>
+         <div class="input-area">
+            <input type="text" id="user-input" autofocus />
+         </div>
+         <div class="results">
+            <p>Speed: <span id="cpm">0</span> symbol in minutes</p>
+            <p>Accuracy: <span id="accuracy">0%</span></p>
+            <p>Time: <span id="timer"></span></p>
+         </div>
+      </div>
+
+      <script src="script.js" type="module"></script>
+   </body>
 </html>
