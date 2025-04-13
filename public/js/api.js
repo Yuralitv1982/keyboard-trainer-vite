@@ -1,3 +1,6 @@
+const API_URL = 'https://icanhazdadjoke.com/';
+const jokeTextElement = document.getElementById('target-text');
+
 export async function getJoke() {
    try {
       const response = await fetch(API_URL, {
